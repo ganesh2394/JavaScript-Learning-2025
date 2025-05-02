@@ -1,1 +1,26 @@
-{"image":"mcr.microsoft.com/devcontainers/universal:2"}
+{
+    "name": "JavaScript Learning 2025",
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "features": {
+      "ghcr.io/devcontainers/features/node:1": {
+        "version": "20"
+      }
+    },
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "dbaeumer.vscode-eslint",
+          "esbenp.prettier-vscode",
+          "formulahendry.code-runner"
+        ],
+        "settings": {
+          "editor.tabSize": 2,
+          "files.autoSave": "onFocusChange"
+        }
+      }
+    },
+    "postCreateCommand": "npm install",
+    "forwardPorts": [3000],
+    "remoteUser": "vscode"
+  }
+  
