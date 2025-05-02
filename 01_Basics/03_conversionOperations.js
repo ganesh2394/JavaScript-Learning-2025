@@ -109,3 +109,11 @@ undefined => false
 // console.log(typeof("123" + true))      // string : 123true
 // console.log(typeof("43" + null));       // string : 43null 
 // console.log(typeof("54"+ undefined));    // string : 54undefined
+
+
+// console.log(2 + 5 + "6");       // 76
+// console.log("1" + 9 + 4);       // 194
+
+// console.log(+true);         // 1
+// console.log(+"");           // 0
+
