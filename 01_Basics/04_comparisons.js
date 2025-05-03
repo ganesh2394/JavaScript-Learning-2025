@@ -66,3 +66,40 @@ console.log([] == "");              // true
 
 // [1] becomes "1" as a string, which is then coerced to number → 1 == 1 → true
 console.log([1] == 1);              // true
+
+/* Memory : Memory refers to how data is stored and managed while your program runs.
+Types of memory : 
+1. Stack : Isme Fixed size ke data types ko store kiya jata hai (Primitive)
+*/
+
+let valueA = 4;
+let valueB = valueA
+console.table([valueB, valueA]);        // 4 : valueB gets a *copy* of valueA
+
+// Note : valueA and valueB are separate in memory.
+
+/* 
+2. Heap Memory (Refernce Memory) : isme complex or dynamic-size data ko store kiya jata hai matlab inke reference(memory address) ko store kiya jata hai.
+*/
+
+let person1 = {name : "Ram", age:32};
+
+let person2 = person1;      // both point to the same object
+
+person2.name = "Raj";
+
+console.log(person1.name); // Raj
+
+// Note : person1 and person2 reference the same object in heap memory.
+
+
+/* 
+Garbage Collection : 
+-> JS automatically frees up memory not in use.
+-> When a variable/object is no longer reachable, the memory is cleaned up.
+
+Example : 
+*/
+
+let obj = { name: "Ganesh" };
+obj = null;                     // Now it's eligible for garbage collection
