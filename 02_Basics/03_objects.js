@@ -92,6 +92,10 @@ let user = {
       name : "Ram",
       age : 23,
       [id] : "101",
+      
+      hello : function(){
+          console.log(`Hello, ${this.name} From JavaScript Tutorial!`);
+      }
 }
 
 console.log(user);
