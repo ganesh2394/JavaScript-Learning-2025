@@ -1,0 +1,63 @@
+++++++++ How does javascript works behind the scenes ? ++++++++++++
+
+----------- JS Engine -----------------------
+Javascript language ko run karne ke liye Browser(V8 Engine) ya node environment ki zarorat hoti.
+For Example : 
+1. Chrome - V8 Engine
+2. Firefox - SpiderMonkey
+3. Safari - JavaScriptCore
+
+Ye Engine JS ko interpret or execute karte hai.
+
+-------- Code Execution Flow ---------
+Jab bhi JS file run hoti hai to kuch steps follow hoti hain : 
+
+Step 1: Global Execution Context (GEC) create hota hai
+- JavaScript hamesha ek Execution Context ke andar code run karta hai.
+- Har function ke andar bhi apna ek execution context hota hai.
+
+GEC ke 2 phase hote hain:
+1. Memory Creation Phase (a.k.a. Hoisting Phase)
+- Sare variables ko memory mil jati hai (undefined se initialize hotey hain).
+- Functions poore ke poore memory mein load ho jaate hain.
+
+2. Code Execution Phase
+- Line-by-line code run hota hai.
+- Variables ko actual value milti hai.
+
+------------ Call Stack (Execution Stack) ----------------
+- JavaScript ek single-threaded language hai, so ek time pe ek hi task handle karti hai.
+- Har bar jab koi function call hota hai, wo Call Stack mein push hota hai. Jab complete ho jata hai, to stack se pop ho jata hai.
+
+For Example : 
+function greet() {
+  console.log("Hello!");
+}
+greet();
+
+Call stack:-
+Global()
+greet()
+console.log()
+
+----------- Memory Heap ----------------
+- Yeh ek jagah hoti hai jahan objects, arrays, functions store hotey hain.
+let user = {
+  name: "Ganesh",
+  age: 22
+};
+- Yeh data heap mein store hota hai.
+
+------------- Asynchronous JavaScript (Event Loop) -------------------
+JavaScript mein:
+- setTimeout()
+- fetch()
+- DOM Events
+
+yeh sab Web APIs handle karti hain (provided by browser).
+
+Behind the scenes:
+- setTimeout call hota hai
+- Browser API ke paas chala jata hai
+- Timer complete hone ke baad callback Callback Queue mein jata hai
+- Event Loop check karta hai — agar Call Stack empty hai, to callback ko stack mein daal deta hai.
