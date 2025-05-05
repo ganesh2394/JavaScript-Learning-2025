@@ -33,35 +33,35 @@ let result = a + b;
 
 let age = 12;
 
-// if(age > 18){
-//     console.log("You are eligible for vote.");
-// }
+if(age > 18){
+    console.log("You are eligible for vote.");
+}
 
 // Expected Output : You are eligible for vote.
 
 
 // b. if...else statement
 
-// if (age > 20) {
-//     console.log("You are eligible for vote.");
+if (age > 20) {
+    console.log("You are eligible for vote.");
     
-// } else {
-//     console.log("You are not eligible for vote.");
-// }
+} else {
+    console.log("You are not eligible for vote.");
+}
 
 // Expected Output : You are not eligible for vote.
 
 // c. if...else if...else
 
-// let score = 85;
+let score = 85;
 
-// if (score >= 90) {
-//     console.log("Grade A");
-//   } else if (score >= 80) {
-//     console.log("Grade B");
-//   } else {
-//     console.log("Grade C");
-//   }
+if (score >= 90) {
+    console.log("Grade A");
+  } else if (score >= 80) {
+    console.log("Grade B");
+  } else {
+    console.log("Grade C");
+  }
 
 // Expected Output : Grade B
 
@@ -69,18 +69,18 @@ let age = 12;
 
 // Used for multiple condition checks — better than many if-else blocks when checking one variable.
 
-// let fruit = "apple";
+let fruit = "apple";
 
-// switch (fruit) {
-//   case "apple":
-//     console.log("Apples are red.");
-//     break;
-//   case "banana":
-//     console.log("Bananas are yellow.");
-//     break;
-//   default:
-//     console.log("Unknown fruit.");
-// }
+switch (fruit) {
+  case "apple":
+    console.log("Apples are red.");
+    break;
+  case "banana":
+    console.log("Bananas are yellow.");
+    break;
+  default:
+    console.log("Unknown fruit.");
+}
 
 // Expected Output : Apples are red.
 
