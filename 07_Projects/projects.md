@@ -5,3 +5,6 @@
 
 ## Project 02 : BMI (Body Mass Index) Calculator
 [Click Here](https://gist.github.com/ganesh2394/9e82915219a75699f5e03bad8836b954)
+
+## Project 03 : Digital Clock
+[Click Here](https://gist.github.com/ganesh2394/7b3af5ae4b12b49b581b7f49c95f885d)
