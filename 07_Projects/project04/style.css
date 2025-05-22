@@ -1,0 +1,30 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.game-container{
+    background-color: white;
+    padding : 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+input, button {
+      padding:0.5rem;
+      margin-top: 1rem;
+      font-size: 1rem;
+      width: 80%;
+}
+
+#message{
+     margin-top: 1rem;
+     font-weight: bold;
+}
