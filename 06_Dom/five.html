@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDIT AND REMOVE DOM Elements</title>
+</head>
+<body style="background-color: black; color: white;">
+       <ul>
+        <li class="language">JavaScript</li>
+       </ul>
+</body>
+<script>
+      // WAY-01(Old Way) : FUNCTION TO ADD LANGUAGE IN THE UL LIST
+      function addLanguage(lang){
+        const li = document.createElement("li");
+        li.textContent = `${lang}`;
+
+        const ul = document.querySelector(".language");
+        ul.appendChild(li);
+      }
+      addLanguage("Ruby");
+      addLanguage("Python")
+
+      // WAY-02 (Optimize Way): 
+      function addLanguageOptimaly(lang){
+          const li = document.createElement("li");
+          // use createTextNode
+          li.appendChild(document.createTextNode(lang));
+          
+          document.querySelector(".language").appendChild(li);
+      } 
+
+      addLanguageOptimaly("Java");
+      addLanguageOptimaly("C");
+
+    //   EDIT : Text or HTML Content
+    const element = document.querySelector("li:nth-child(2)");
+    // element.textContent = "Mojo"
+    // element.innerHTML = "Mojo"
+
+    newli = document.createElement("li");
+    newli.textContent = "Mojo";
+    // console.log(newli);
+    element.replaceWith(newli);
+
+    // REMOVE 
+    let lastChild = document.querySelector("li:last-child");
+    console.log("Last Language : ",lastChild.textContent);
+    lastChild.remove();
+    
+</script>
+</html>

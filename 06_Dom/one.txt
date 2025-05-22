@@ -1,0 +1,65 @@
+What is DOM ?
+- DOM stands for Document Object Model.
+- It is a programming interface that allows JavaScript to interact with the HTML and CSS.
+- It is tree-like structure that represent all element in the web page.
+
+Note : Your HTML code gets converted by the web browser into the DOM which JavaScript can read, modify, delete and add element to.
+
+one.html page get converted into dom tree : 
+
+Document
+└── html
+    ├── head
+    │   ├── meta (charset="UTF-8")
+    │   └── title ("DOM | Learners")
+    └── body
+        └── div (class="bg-black")
+            ├── h1 (class="heading") - "Dom Learning on YouTube"
+            └── p - "Lorem ipsum dolor sit amet."
+
+Important : Each item is a node(element node, text node etc.)
+
+# Types of Node :-
+1. Element - HTML tags like <p>, <div>, <h1> etc.
+2. Text - The text inside elements.
+3. Comment - <!-- comments -->
+4. Document - Entire HTML document. 
+
+------ Important Data Structure ------
+
+1. HTMLCollection :-
+- A live collection of HTML elements.
+- Returned by methods like:
+(i) document.getElementsByTagName()
+(ii) document.getElementsByClassName()
+- It updates automatically when the DOM changes (live collection).
+- It is array-like, meaning you can access items with indices and use .length, but it’s not a true array — so methods like forEach, map, etc., do not work directly.
+Example :-
+htmlCollection[0];
+htmlCollection.length;
+
+htmlCollection.forEach(); // Error
+
+2. NodeList
+- A static or live collection of nodes (elements, text nodes, etc.).
+- Returned by:
+(i) document.querySelectorAll() (static)
+(ii) Node.childNodes (live)
+- Unlike HTMLCollection, a NodeList may include non-element nodes like text or comments.
+- Most modern browsers allow using .forEach() on a NodeList.
+Example :-
+nodeList[1];
+nodeList.length;
+nodeList.forEach(node => console.log(node)); // Works in modern browsers
+
+3. Array
+- A standard JavaScript array.
+- You can convert HTMLCollection or NodeList to an array to use all array methods (map, filter, etc.).
+Use:
+(i) Array.from(collection)
+(ii) [...collection]
+
+Example:-
+const nodes = document.querySelectorAll('p'); // NodeList
+const nodeArray = Array.from(nodes);          // true Array
+nodeArray.map(node => node.textContent);

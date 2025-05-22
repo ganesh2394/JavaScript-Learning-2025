@@ -1,0 +1,55 @@
+<!-- Sample HTML Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document Object Model</title>
+</head>
+<body>
+    <!-- getElementById -->
+  <div id="header">Header Section</div>
+
+  <!-- getElementsByClassName and querySelectorAll -->
+  <p class="description">Paragraph 1</p>
+  <p class="description">Paragraph 2</p>
+
+  <!-- getElementsByTagName -->
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+  </ul>
+
+  <!-- querySelector -->
+  <section class="container">
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+  </section>
+
+  <!-- getElementsByName -->
+  <input type="text" name="username" />
+  <input type="password" name="password" />
+
+  <!-- document.forms -->
+  <form id="loginForm">
+    <input type="text" name="email" />
+    <input type="submit" value="Login" />
+  </form>
+
+  <!-- children & childNodes -->
+  <div id="parent">
+    Text Node
+    <span>Child 1</span>
+    <span>Child 2</span>
+  </div>
+
+  <!-- closest -->
+  <div class="outer">
+    <div class="middle">
+      <div class="inner" id="target">Find my closest .outer</div>
+    </div>
+  </div>
+
+  <div id="example">
+     Hello <span style="display: none;">World</span>
+  </div>
+</body>
+</html>

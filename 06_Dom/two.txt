@@ -1,0 +1,204 @@
+-------- What are DOM Selectors? ------------
+DOM (Document Object Model) selectors are methods provided by JavaScript to access and manipulate HTML elements dynamically.
+
+1. getElementById()
+-------------------
+- Selects a single element by its unique id.
+- Returns a single element or null.
+
+html : <div id="main">Welcome</div>
+js : 
+const mainDiv = document.getElementById("main");
+console.log(mainDiv.textContent); // Output: Welcome
+
+2. getElementsByClassName()
+---------------------------
+- Selects all elements with a given class name.
+- Returns an HTMLCollection (live, array-like).
+
+html : 
+<p class="info">One</p>
+<p class="info">Two</p>
+
+js : 
+const paras = document.getElementsByClassName("info");
+console.log(paras.length); // Output: 2
+
+3. getElementsByTagName()
+-------------------------
+- Selects all elements with a specified tag.
+- Returns an HTMLCollection.
+
+html : 
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>
+
+js : 
+const items = document.getElementsByTagName("li");
+console.log(items[1].textContent); // Output: Item 2
+
+4. querySelector()
+------------------
+- Selects the first matching element using a CSS selector.
+- Returns a single element or null.
+
+html : <div class="card"></div>
+js : const card = document.querySelector(".card");
+
+5. querySelectorAll()
+---------------------
+- Selects all elements matching a CSS selector.
+- Returns a NodeList (static).
+
+html : 
+<p class="text">A</p>
+<p class="text">B</p>
+
+
+js :
+const texts = document.querySelectorAll(".text");
+texts.forEach(p => console.log(p.textContent));
+// Output: A B
+
+6. getElementsByName()
+---------------------
+- Selects elements by their name attribute (useful in forms).
+- Returns a NodeList.
+
+html : 
+<input type="text" name="email" />
+<input type="text" name="email" />
+
+js : 
+const inputs = document.getElementsByName("email");
+console.log(inputs.length); // Output: 2
+
+7. document.forms
+-----------------
+-  Returns all <form> elements in a document.
+- Returns an HTMLCollection.
+
+html : <form id="loginForm"></form>
+js : 
+const form = document.forms[0];
+console.log(form.id); // Output: loginForm
+
+8. element.children
+-------------------
+- Returns only child element nodes (no text/comments).
+- Returns an HTMLCollection.
+
+html : 
+<ul id="menu">
+  <li>Home</li>
+  <li>About</li>
+</ul>
+
+js :
+const items = document.getElementById("menu").children;
+console.log(items.length); // Output: 2
+
+9. element.childNodes
+---------------------
+- Returns all child nodes (elements, text, comments).
+- Returns a NodeList.
+
+js :
+const nodes = document.getElementById("menu").childNodes;
+console.log(nodes.length); // May be more than 2 (includes whitespace)
+
+10. element.closest(selector)
+----------------------------
+- Finds the closest ancestor that matches a selector (including the element itself).
+- Returns an element or null.
+
+html : 
+<div class="outer">
+  <div class="inner" id="target"></div>
+</div>
+
+js : 
+const el = document.getElementById("target");
+const container = el.closest(".outer");
+console.log(container.className); // Output: outer
+
+
+# Converting Collections to 
+--------------------------
+
+const array = Array.from(document.getElementsByClassName("info"));
+array.forEach(el => console.log(el.textContent));
+
+-----------------------------------------------------------------------------
+
+1. textContent
+--------------
+What it does:
+Gets or sets the text content of an element and all its descendants.
+It includes all text, even hidden by CSS, and does not parse HTML tags — it treats them as text.
+
+Use case:
+When you want the raw text inside an element regardless of styling or HTML tags.
+
+Example:
+html : 
+<div id="example">
+  Hello <span>World</span>!
+</div>
+
+js : 
+const el = document.getElementById("example");
+console.log(el.textContent);  
+// Output: "Hello World!"
+
+settings : 
+el.textContent = "New Text <b>bold</b>";
+// The <b> tags will appear as plain text, not bold.
+
+2. innerHTML
+------------
+What it does:
+Gets or sets the HTML content inside an element.
+When getting, returns all HTML markup as a string.
+When setting, parses the string as HTML and renders it.
+
+Use case:
+When you want to insert or read raw HTML markup inside an element.
+
+Example:
+js : 
+console.log(el.innerHTML);  
+// Output: "Hello <span>World</span>!"
+
+settings : 
+el.innerHTML = "New Text <b>bold</b>";
+// Now the text "bold" will be bold because <b> is interpreted as HTML
+
+3. innerText
+------------
+What it does:
+Gets or sets the visible text inside an element, considering CSS styles like display:none.
+It triggers layout reflow to compute visible text, so it can be slower.
+
+Use case:
+When you want the text that the user actually sees, ignoring hidden elements.
+
+Example:
+
+html : 
+<div id="test">
+  Hello <span style="display:none">Invisible</span> World!
+</div>
+
+js : 
+const testEl = document.getElementById("test");
+console.log(testEl.innerText);
+// Output: "Hello  World!"  (no "Invisible" because it's hidden)
+
+
+settings : 
+testEl.innerText = "Changed Text <b>bold</b>";
+// The <b> will be treated as text, no formatting applied.
+

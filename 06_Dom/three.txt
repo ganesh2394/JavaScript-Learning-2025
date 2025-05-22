@@ -1,0 +1,14 @@
+--- four.html ----
+
+| Task              | Method / Property                       |
+| ----------------- | --------------------------------------- |
+| Create element    | `document.createElement('tag')`         |
+| Set class name    | `element.className = '...'`             |
+| Add class(es)     | `element.classList.add('...')`          |
+| Set attribute     | `element.setAttribute('name', 'value')` |
+| Add text          | `element.textContent = '...'`           |
+| Add HTML content  | `element.innerHTML = '...'`             |
+| Add child element | `element.appendChild(child)`            |
+| Append to parent  | `parent.appendChild(element)`           |
+| Add event         | `element.addEventListener('event', fn)` |
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Element | DOM</title>
+</head>
+<body style="background-color: black; color: white;">
+        <h1>Add New Element</h1>
+        <div id="container"></div>
+</body>
+<script>
+        // => CREATE A NEW ELEMENT : document.createElement();
+         let div = document.createElement("div");
+         console.log(div);
+
+         // => ADD CLASSES, IDS AND ATTRIBUTES
+         div.className = "myDiv";
+         div.id = "myId";
+         div.setAttribute('data-role', 'popup'); 
+
+        //  You can also use classList.add() for better class management:
+        div.classList.add("highlight", "rounded");
+
+        // => ADD CONTENT : HAVE THREE OPTIONS
+
+        // WAY-01 : textContent → Adds plain text
+        // div.textContent = "Content added using textContent";
+
+        // WAY-02 : innerHTML → Adds HTML content
+        div.innerHTML = "<strong>Bold Text</strong>"; 
+
+        // WAY-03 : append / appendChild → Add nodes or strings
+        const span = document.createElement("span");
+        span.textContent = "Inside Span";
+        div.appendChild(span);
+
+        // WAY-04 : 
+        const addText = document.createTextNode("Content created using createTextNode")
+        div.appendChild(addText);
+
+
+        // => ADD TO THE DOM
+        // Attach the new element to an existing parent (like body or a div):
+        // document.body.appendChild(div);
+
+        // Or inside a specific container:
+        // const container = document.querySelector("#container");
+        // console.log(container);
+        // container.appendChild(div);
+
+
+</script>
+</html>
