@@ -1,0 +1,67 @@
+---- What is an Event ------
+
+Events in JavaScript are actions or occurrences that happen in the browser and can be responded to with code — like when a user clicks a button, moves the mouse, presses a key, or loads a page.
+- You can listen for these events and run code when they happen. This is called event handling.
+
+# How Events Work (3 Parts)
+---------------------------
+1. Target – the HTML element where the event happens (like a button)
+2. Event Type – the kind of event (click, submit, keydown, etc.)
+3. Event Handler – a function that runs when the event happens
+
+# Common JavaScript Events
+--------------------------
+| Event Type  | Description                        |
+| ----------- | ---------------------------------- |
+| `click`     | Mouse click on an element          |
+| `dblclick`  | Double-click                       |
+| `mouseover` | Mouse enters an element            |
+| `mouseout`  | Mouse leaves an element            |
+| `keydown`   | Key pressed down                   |
+| `keyup`     | Key released                       |
+| `input`     | User inputs text                   |
+| `change`    | Form field changed (select, input) |
+| `submit`    | Form submitted                     |
+| `load`      | Page/image has loaded              |
+| `resize`    | Window is resized                  |
+| `scroll`    | User scrolls the page              |
+
+# How to Attach an Event Listener
+---------------------------------
+1. addEventListener() (Best Practice)
+
+element.addEventListener("click", handlerFunction, propagation(false : true) - bubbling : capturing);
+
+2. Inline in HTML (Not Recommended)
+
+<button onclick="alert('Clicked!')">Click</button>
+
+3. Old Style in JS
+
+element.onclick = function () {
+  alert("Clicked!");
+};
+
+
+# Event Object :-
+-----------------
+When an event happens, JS passes an event object to your handler. You can use it to get more info.
+
+button.addEventListener("click", function (event) {
+  console.log(event.type); // "click"
+  console.log(event.target); // the element clicked
+});
+
+
+# Event Bubbling and Capturing (Advanced)
+-----------------------------------------
+1. Bubbling: Events start at the target and bubble up to parent elements.
+2. Capturing: The reverse — events are caught going down the DOM.
+
+- You can control this with options in addEventListener like { capture: true }.
+
+# Stopping Propagation
+----------------------
+You can stop the event from traveling further with:
+event.stopPropagation();
+
