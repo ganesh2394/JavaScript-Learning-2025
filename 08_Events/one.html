@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event | HTML </title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+        <div class="container">
+              <button" style="cursor: pointer;" id="clickBtn">Click Me</button>
+              <p id="output"></p>
+        </div>
+</body>
+
+<script>
+         const clickBtn = document.getElementById("clickBtn");
+         clickBtn.addEventListener("click", function(){
+             document.getElementById("output").textContent = "Button was Clicked!";
+         })
+</script>
+</html>
