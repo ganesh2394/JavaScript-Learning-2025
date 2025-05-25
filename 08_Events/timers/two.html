@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project - 02 | SetInterval</title>
+</head>
+<body>
+     <h2>SetTimeOut Demo</h2>
+     <button id="start">Start</button>
+     <button id="stop">Stop</button>
+
+     <script>
+         const startBtn = document.getElementById("start");
+         const stopBtn = document.querySelector("#stop");
+         let intervalId = null;
+
+        startBtn.addEventListener("click", function(){
+            // Already Running
+             if(intervalId){
+                 return;
+             }
+             intervalId =  setInterval(function(){
+                 console.log(`Hey Forks ${Date.now()}.`);
+             }, 1000);
+         });
+
+         stopBtn.addEventListener("click", function(){
+             clearInterval(intervalId);
+             // do not forget 
+             intervalId = null;
+         });
+     </script>
+</body>
+</html>

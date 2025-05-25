@@ -1,0 +1,103 @@
+---- Async Code ----
+
+JavaScript is single-threaded, meaning it can only execute one operation at a time.
+However, in web development, there are tasks that take time to complete, such as fetching 
+data from an API, reading a file, or waiting for a user input. If these tasks were 
+executed synchronously, they would block the main thread, making the user interface unresponsive.
+
+Asynchronous JavaScript allows you to execute code without waiting for the
+completion of time-consuming tasks. Instead of blocking the main thread, these
+tasks are delegated to the browser's background processes, and once completed,
+a callback function triggered to handle the result.
+
+There are three main ways to handle asynchronous operations in JavaScript:
+
+1. Callback
+-----------
+A callback function is passed as an argument to another function and is executed 
+after the first function completes.
+
+Example :-
+
+function getData(callback) {
+  setTimeout(() => {
+    callback("Data fetched!");
+  }, 1000);
+}
+
+getData((data) => {
+  console.log(data); // Output: Data fetched! after 1 second
+});
+
+2. Promises
+-----------
+A Promise represents the eventual result of an asynchronous operation. It can be in one of 
+three states: pending, fulfilled, or rejected.
+
+Example :-
+function getData() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Data fetched!");
+    }, 1000);
+  });
+}
+
+getData().then((data) => {
+  console.log(data); // Output: Data fetched! after 1 second
+});
+
+3. Async/Await
+--------------
+Async/await is a more recent way to work with asynchronous code 
+that makes it look and behave a bit more like synchronous code. It is built on top of Promises.
+
+Example :-
+
+async function getData() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Data fetched!");
+    }, 1000);
+  });
+}
+
+async function printData() {
+  const data = await getData();
+  console.log(data); // Output: Data fetched! after 1 second
+}
+
+printData();
+
+Important Points :-
+-------------------
+What is Callback Hell?
+Callback hell, also known as the "pyramid of doom," occurs when you have multiple nested callbacks within your code. 
+Each level of nesting represents a subsequent asynchronous operation that depends on the result of the previous one.
+
+- While callbacks serve their purpose, they often lead to a phenomenon known as "callback hell" – a situation where multiple nested callbacks make the code hard to read and maintain.
+- Callback hell arises when asynchronous operations depend on the results of other asynchronous operations, creating deeply nested callback functions. This can make the code difficult to follow, debug, and maintain.
+- Promises were introduced to address this issue and provide a more elegant solution to asynchronous code.
+
+# Understanding JavaScript Asynchronous behavior behind the scenes:-
+-------------------------------------------------------------------
+Refer link : https://miro.medium.com/v2/resize:fit:4800/format:webp/1*yqAq9LF74Fbsaqc3mRWLbQ.png
+
+1. JavaScript Runtime — This is a container that provides your scripts with utility libraries that can be used during execution.
+
+2. The JavaScript Engine — This is basically Google’s V8 engine that compiles the JavaScript code to native machine code which gives 
+JavaScript a performance boost. It consists of a Heap(Memory) and a Stack(functions).
+
+3. JavaScript has only a single thread of execution which means that it can only do one thing at a time. this simply means that it 
+has one call stack.
+
+4. WebAPIs — these are not part of the javascript language. they are provided by the browser. They are basically threads that you can 
+make calls to which then enables concurrency during execution despite the single ‘threadedness’ of javascript language. 
+Examples of these APIs are: DOM, timers, geolocation APIs, fetch APIs, AJAX, etc.
+
+5. Callback Queue — this is a data structure that holds all the ready-to-be-executed callback functions that are attached to some event that has occurred. 
+These ready-to-be-executed functions stay here till the call stack is empty.
+
+6. Event Loop — When the call stack is empty, the event loop takes the callbacks from the callback queue and puts them into the call stack to execute them. 
+This actually is the piece of the structure that makes the asynchronous behavior happen in javascript.
+

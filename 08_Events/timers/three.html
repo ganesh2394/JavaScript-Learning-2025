@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project - 03 : Random Background Color | SetInverval</title>
+    <style>
+        body{
+            font-family: Arial;
+            padding:100px;
+            text-align: center;
+            transition: backgroud-color 0.5s ease;
+        }
+
+        button{
+            padding:10px 20px;
+            font-size: 18px;
+            margin:10px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+       <!-- Create a simple interactive web application that changes the background color of the page to 
+       a random color at regular intervals when the user clicks the Start button, and stops changing 
+       the color when the Stop button is clicked. -->
+
+       <!-- 
+            Math.random():Generates a random decimal number between 0 (inclusive) and 1 (exclusive), like 0.453234.
+            Math.random() *16777215:This scales the random decimal to a number between 0 and 16777214.999
+            Why:It’s the maximum decimal value for a 24-bit color, equal to #FFFFFF (white).
+            Math.floor(Math.random() * 16777215) : Rounds the number down to the nearest whole number.
+            .toString(16):Converts the number to a hexadecimal string.
+            hex.padStart(6, '0'):Ensures the string has exactly 6 characters (2 hex digits for R, G, and B). 
+               
+               -->
+
+       <h2>Random Background Color</h2>
+       <button id="start">Start</button>
+       <button id="stop">Stop</button>
+
+       <script>
+            const startBtn = document.getElementById("start");
+            const stopBtn = document.getElementById("stop");
+
+            
+            function getRandomColor(){
+                // Way-01 : generate rgb color 0-255
+                // const r = Math.random()*256;
+                // const g = Math.random()*256;
+                // const b = Math.random()*256;
+                
+                // return `rgb(${r}, ${g}, ${b})`;
+                
+                // Way-02 : generate hexadecimal color
+                const hex = Math.floor(Math.random() * 16777215).toString(16);
+                return "#" + hex.padStart(6, '0');
+            }
+
+            let colorIntervalId = null;
+
+            // Start changing background color
+            startBtn.addEventListener("click", function(){
+                // If already running
+                if(colorIntervalId){
+                    return;
+                }
+                colorIntervalId =  setInterval(function(){
+                      document.body.style.backgroundColor = getRandomColor();
+                 }, 1000);
+            })
+
+            stopBtn.addEventListener("click", function(){
+                 clearInterval(colorIntervalId);
+                 colorIntervalId = null;
+            })
+
+       </script>
+       
+</body>
+</html>

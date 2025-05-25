@@ -1,0 +1,71 @@
+---- JavaScript Timing Functions (Timers) ----
+
+Timers let you schedule functions to run later — either once after a delay or repeatedly.
+There are 3 main timer-related functions in JavaScript:
+
+| Timer Function    | Description                         |
+| ----------------- | ----------------------------------- |
+| `setTimeout()`    | Runs once after a delay             |
+| `setInterval()`   | Runs repeatedly after intervals     |
+| `clearTimeout()`  | Cancels a timeout                   |
+| `clearInterval()` | Cancels an interval                 |
+
+1. setTimeout() :-
+
+Syntax :- let timeoutID = setTimeout(callback, delay, arg1, arg2, ...);
+
+- callback: Function to run
+- delay: Time in ms (1 sec = 1000 ms)
+- Returns a timeoutID that you can cancel
+
+Example :
+
+setTimeout(function(){
+     console.log("Hello after 2 seconds);
+}, 2000);
+
+# Behind the Scenes:
+-------------------
+1. setTimeout is sent to Web APIs
+2. Timer starts counting in background
+3. After delay, callback goes to the Task Queue
+4. Event Loop puts it on the Call Stack when it's free
+
+2. setInterval() : -
+Runs the function again and again after the interval.
+
+Syntax :- let intervalID = setInterval(callback, interval);
+
+Example :
+
+let count = 0;
+
+let count = 0;
+
+const interval = setInterval(() => {
+  count++;
+  console.log("Count:", count);
+  if (count === 5) clearInterval(interval); // stop after 5 times
+}, 1000);
+
+3. clearTimeout() & clearInterval() :-
+Use these functions to cancel scheduled timeouts/intervals before they run or repeat.
+
+Example :
+
+let timeout = setTimeout(() => {
+  console.log("You won't see this");
+}, 5000);
+
+clearTimeout(timeout); // cancels it
+
+# Behind the Scenes (Event Loop Context)
+----------------------------------------
+JS Code → Call Stack
+setTimeout → Web API → Timer delay
+→ Callback Queue
+→ Event Loop (when stack is clear)
+→ Call Stack → Execute
+
+Note : Even if you use setTimeout(fn, 0), it never runs immediately — only after the current stack finishes.
+
