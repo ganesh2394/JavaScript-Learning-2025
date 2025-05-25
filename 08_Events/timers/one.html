@@ -4,11 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project-01 | SetTimeOut</title>
+    <style>
+      body{
+           font-family: Arial;
+           padding:100px;
+           text-align: center;
+      }
+      button{
+           padding:10px 20px;
+           font-size: 16px;
+           margin:10px;
+           border-radius:4px;
+      }
+    </style>
 </head>
 <body>
-         <!-- <h2 style="font-family: 'Courier New', Courier, monospace;">Magic Of Times</h2>
+         <!-- <h2>Magic Of Times</h2>
          <button id="click">Magic After 2 sec</button>
-         <p id="showMsg" style="font-size: 20px; color: black; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"></p>
+         <p id="showMsg"></p>
 
          <script>
                 const button = document.getElementById("click");
@@ -25,16 +38,22 @@
          
          <script>
                 // use setTimeout here : to display message on console.
-                const stopTimer = setTimeout(function(){
+                let stopTimer = null;
+                stopTimer = setTimeout(function(){
                      console.log("Hey James!")
-                }, 2000);
-
+                    }, 2000);
+                    
                 //TODO: when click on the button stop stop setTimeout
 
                 const stopBtn = document.getElementById("stop");
                 stopBtn.addEventListener("click", function(){
                      clearTimeout(stopTimer);
-                     console.log("Stopped Timer");
+                     if(stopTimer === null){
+                         console.log("Stopped Timer");
+                     }
+                     else{
+                          stopTimer = null;
+                     }
                 })
          </script>
 </body>
