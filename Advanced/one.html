@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web APIs | XMLHttpRequest</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <body>
+    <h2>XMLHttpRequest</h2>
+
+    <script>
+      // Create a new XMLHttpRequest object
+      const xhr = new XMLHttpRequest();
+
+      // Set the URL for the request
+      const reqURL = "https://jsonplaceholder.typicode.com/users";
+
+      // Initialize the request (method: GET, URL: reqURL)
+      xhr.open("GET", reqURL);
+
+      // This function will run every time the readyState changes (0 to 4)
+      xhr.onreadystatechange = function () {
+        // Check if the request is complete (readyState 4) and successful (status 200)
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr.status); // Logs the status code (should be 200)
+
+          // Parse the responseText (JSON string) into a JavaScript object
+          const data = JSON.parse(xhr.responseText);
+
+          // Log the parsed data (array of users)
+          console.log(data);
+        }
+      };
+
+      // Send the request to the server
+      xhr.send();
+    </script>
+  </body>
+</html>
