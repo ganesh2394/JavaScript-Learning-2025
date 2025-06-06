@@ -1,0 +1,143 @@
+-------- Promises in JavaScript ----------
+A Promise in JavaScript represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
+🔸 Why Promises?
+-----------------
+Before promises, callback functions were used to handle async operations (like API calls, file reading). But callbacks led to issues like:
+
+• Callback hell (nested callbacks)
+
+• Inversion of control (you hand over control to third-party functions)
+
+Promises solve these by offering a cleaner, more powerful abstraction.
+
+🔸 What is a Promise?
+---------------------
+A Promise is an object that represents the eventual result of an async operation.
+It can be in one of three states:
+
+| State         | Meaning                                  |
+| ------------- | ---------------------------------------- |
+| **Pending**   | Initial state, not fulfilled or rejected |
+| **Fulfilled** | Operation completed successfully         |
+| **Rejected**  | Operation failed                         |
+
+🔸 Creating a Promise
+----------------------
+
+const myPromise = new Promise((resolve, reject) => {
+  let success = true;
+
+  if (success) {
+    resolve("Operation was successful!");
+  } else {
+    reject("Something went wrong.");
+  }
+});
+
+• resolve(value) — called when the task completes successfully.
+
+• reject(error) — called when the task fails.
+
+🔸 Consuming a Promise
+-----------------------
+Using .then() and .catch()
+
+myPromise
+  .then(result => {
+    console.log("Success:", result);
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });
+
+Using .finally()
+myPromise
+  .then(result => console.log(result))
+  .catch(err => console.error(err))
+  .finally(() => console.log("Cleanup or final step"));
+
+🔸 Promise Chaining
+-------------------
+Each .then() returns a new promise.
+
+fetchData()
+  .then(data => {
+    console.log(data);
+    return data + " with extra processing.";
+  })
+  .then(modifiedData => {
+    console.log(modifiedData);
+  })
+  .catch(err => console.error(err));
+
+🔸 Promise Methods
+------------------
+Promise.all([p1, p2, ...])
+Waits for all promises to fulfill, or rejects if any one fails.
+
+Promise.all([p1, p2])
+  .then(results => console.log(results))
+  .catch(err => console.error(err));
+
+Promise.race([p1, p2, ...])
+Resolves/rejects as soon as one of the promises settles.
+
+Promise.allSettled([p1, p2, ...])
+Waits for all promises and gives the result of each, regardless of success/failure.
+
+Promise.any([p1, p2, ...])
+Resolves when any one fulfills, and rejects only if all fail.
+
+🔸 Using async / await (Promise Syntactic Sugar)
+================================================
+
+async function getData() {
+  try {
+    const data = await fetchData();
+    console.log("Data:", data);
+  } catch (err) {
+    console.error("Error:", err);
+  } finally {
+    console.log("Done!");
+  }
+}
+
+• async makes a function return a promise.
+
+• await pauses the function until the promise settles.
+
+============= Fetch() ============
+
+What is fetch() ? 
+-----------------
+The fetch() function in JavaScript is used to make HTTP requests (GET, POST, PUT, DELETE, etc.) to servers, and it returns a Promise.
+
+Syntax : 
+
+fetch(url, options)
+
+• Returns a Promise that resolves to a Response object.
+• Does not reject on HTTP errors like 404 or 500 — only on network failures (like no internet).
+
+Basic fetch() Example
+---------------------
+
+fetch('https://jsonplaceholder.typicode.com/posts/1')
+  .then(response => response.json()) // Converts response to JSON
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+
+🔸 fetch() Response Object
+---------------------------
+When you use fetch(), you get a Response object, which has methods like:
+
+| Method    | Description                               |
+| --------- | ----------------------------------------- |
+| `.json()` | Parses the body text as JSON              |
+| `.text()` | Returns plain text                        |
+| `.blob()` | For binary data like images/files         |
+| `.status` | HTTP status code (e.g. `200`, `404`)      |
+| `.ok`     | Boolean – true if status in range 200-299 |
+
+

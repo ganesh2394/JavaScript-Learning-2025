@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web APIs || XMLHttpRequest</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>JS with XMLHttpRequest</h2>
+
+    <script>
+        console.log("JS with XMLHttpRequest");
+
+        const reqURL = 'https://jsonplaceholder.typicode.com/users';
+        const xhr = new XMLHttpRequest();
+        
+        xhr.open('GET', reqURL);
+        console.log("After the Open Method:", xhr.readyState); // Should log 1 (OPENED)
+
+        xhr.onreadystatechange = function () {
+            console.log("Current readyState:", xhr.readyState);
+
+            if (xhr.readyState === 4) { // 4 means DONE
+                if (xhr.status === 200) {
+                    // Successfully received response
+                    const users = JSON.parse(xhr.responseText);
+                    console.log("Users Data:", users);
+                    
+                    // Optional: Display users on the webpage
+                    const userList = document.createElement('ul');
+                    users.forEach(user => {
+                        const li = document.createElement('li');
+                        li.textContent = `${user.name} (${user.email})`;
+                        userList.appendChild(li);
+                    });
+                    document.body.appendChild(userList);
+                } else {
+                    console.error("Failed to fetch data. Status:", xhr.status);
+                }
+            }
+        };
+
+        xhr.send();
+    </script>
+</body>
+</html>

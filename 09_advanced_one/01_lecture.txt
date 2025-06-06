@@ -1,0 +1,29 @@
+---- What is an API ----
+- API stands for Application Programming Interface.
+- It is a set of rules and tools that allows one piece of software to communicate with another.
+
+Example : 
+1. https://api.github.com/users/user-name
+2. https://randomuser.me/api
+3. https://jsonplaceholder.typicode.com/users
+
+Formatter : JSON Formatter (https://jsonformatter.org/)
+
+# What is XMLHttpRequest?
+-------------------------
+XMLHttpRequest (XHR) is a built-in JavaScript object that allows you to:
+
+- Send HTTP or HTTPS requests to a server,
+- Receive responses without refreshing the page,
+- Communicate with APIs, load data, submit forms, and more — all asynchronously.
+
+It was introduced in the early 2000s, and was the core technology behind AJAX, which enabled dynamic, interactive web pages.
+
+Misconception:-
+--------------
+Despite the name, XMLHttpRequest can handle any data format, not just XML. JSON is more commonly used today.
+
+Why use it (historically)?
+--------------------------
+Before modern tools like fetch() and axios, XHR was the only way in JavaScript to send/receive data without reloading the web page.
+
