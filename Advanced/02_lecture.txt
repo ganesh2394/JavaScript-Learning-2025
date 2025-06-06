@@ -1,0 +1,39 @@
+--- What is Promises ? ---
+The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting 
+value.
+
+# A Promise is in one of these states:
+- pending: initial state, neither fulfilled nor rejected.
+- fulfilled: meaning that the operation was completed successfully.
+- rejected: meaning that the operation failed.
+
+Why Promises?
+-------------
+Before Promises, we used callback functions to handle asynchronous code (like AJAX). But this led to callback hell (nested functions, messy code).
+Promises make asynchronous code:
+- Cleaner
+- Easier to read
+- Easier to handle errors
+
+# Promise Structure :-
+----------------------
+let promise = new Promise(function (resolve, reject) {
+  // async operation here
+  if (/* success */) {
+    resolve(value);
+  } else {
+    reject(error);
+  }
+});
+
+- resolve(value) → operation successful
+- reect(error) → operation failed
+
+# State of Promise
+------------------
+| State       | Description                                   |
+| ----------- | --------------------------------------------- |
+| `pending`   | Initial state, neither fulfilled nor rejected |
+| `fulfilled` | Operation completed successfully              |
+| `rejected`  | Operation failed                              |
+

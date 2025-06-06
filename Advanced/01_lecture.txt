@@ -1,0 +1,94 @@
+--- What is an API ---
+
+- API stands for Application Programming Interface.
+- It is a set of rules and tools that allows one piece of software to communicate with another.
+
+Example : 
+1. https://api.github.com/users/user-name
+2. https://randomuser.me/
+3. https://jsonplaceholder.typicode.com/users
+
+Formattor : https://jsonformatter.org/
+
+
+---- What is XMLHttpRequest ------
+XMLHttpRequest (XHR) is a built-in JavaScript object that allows you to:
+- Send HTTP or HTTPS requests to a server,
+- Receive responses without refreshing the page,
+- Communicate with APIs, load data, submit forms, and more — all asynchronously.
+
+It was introduced in the early 2000s, and was the core technology behind AJAX, which enabled dynamic, interactive web pages.
+
+Misconception:-
+--------------
+Despite the name, XMLHttpRequest can handle any data format, not just XML. JSON is more commonly used today.
+
+# Why use it (historically)?
+----------------------------
+Before modern tools like fetch() and axios, XHR was the only way in JavaScript to send/receive data without reloading the web page.
+
+# open(method, url)
+------------------
+- Prepares the request.
+- Common method: "GET" or "POST".
+
+# send()
+-------
+- Sends the actual HTTP request to the server after open().
+
+# onreadystatechange Event
+--------------------------
+- A function that runs every time the readyState of the request changes.
+- You check xhr.readyState and xhr.status inside this to handle responses.
+
+# readyState Values
+-------------------
+| Value | Name               | Meaning                                       |
+| ----- | ------------------ | --------------------------------------------- |
+| `0`   | `UNSENT`           | Request not initialized (`open()` not called) |
+| `1`   | `OPENED`           | `open()` has been called                      |
+| `2`   | `HEADERS_RECEIVED` | `send()` has been called, headers received    |
+| `3`   | `LOADING`          | Downloading; response not yet complete        |
+| `4`   | `DONE`             | Operation complete                            |
+
+Note : You should only process the response at readyState === 4.
+
+# status codes 
+--------------
+| Status | Meaning               |
+| ------ | --------------------- |
+| `200`  | OK (Success)          |
+| `404`  | Not Found             |
+| `500`  | Server Error          |
+| `0`    | No response / offline |
+
+# responseText
+--------------
+- Returns the raw response as a string.
+- Use JSON.parse(xhr.responseText) to convert JSON into a JavaScript object.
+
+# setRequestHeader()
+-------------------
+Used with POST or custom headers.
+Example : xhr.setRequestHeader("Content-Type", "application/json");
+
+Limitations of XHR (Why fetch is preferred today) :-
+1. Verbose syntax.
+2. No built-in Promises support.
+3. Difficult to chain requests or handle errors cleanly.
+
+# Why Was fetch() Introduced?
+----------------------------
+Native browser support (no library needed)
+Cleaner, modern syntax using Promises
+Supports chaining (.then()) and async/await
+
+# Why axios Gained Popularity (even after fetch)
+----------------------------------------------
+1. Automatic JSON parsing
+2. Better error handling
+3. Interceptors for requests/responses
+4. Supports older browsers (polyfilled)
+5. Can cancel requests
+6. Works on both client and server (Node.js)
+
