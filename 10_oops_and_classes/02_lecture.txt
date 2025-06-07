@@ -1,0 +1,69 @@
+1. What is an object ?
+----------------------
+An object is a collection of key-value pairs where:
+
+• Keys (also called properties) are always strings (or Symbols),
+
+• Values can be any valid JavaScript data type: string, number, boolean, array, function, even another object!
+
+🔑 Think of an object as a real-world "thing" with properties (data) and methods (actions).
+
+Example:-
+--------
+
+const person = {
+  name: "Ganesh",
+  age: 25,
+  isStudent: false,
+  greet: function () {
+    console.log("Hello!");
+  }
+};
+
+• name, age, isStudent are properties
+• greet is a method (function inside object)
+
+How to create an object ?
+-------------------------
+
+1. Using Object Literal :
+
+const car = {
+  brand: "Toyota",
+  color: "red"
+};
+
+
+2. Using new Object()
+
+const car = new Object();
+car.brand = "Toyota";
+
+
+3. Using Constructor Functions
+
+function Car(brand) {
+  this.brand = brand;
+}
+const car1 = new Car("BMW");
+
+
+4. Using Classes (ES6)
+
+class Car {
+  constructor(brand) {
+    this.brand = brand;
+  }
+}
+
+
+
+| Method                | Purpose                                      |
+| --------------------- | -------------------------------------------- |
+| `Object.keys(obj)`    | Returns array of keys                        |
+| `Object.values(obj)`  | Returns array of values                      |
+| `Object.entries(obj)` | Returns array of \[key, value]               |
+| `Object.assign()`     | Copies properties from one object to another |
+| `Object.freeze(obj)`  | Makes object immutable                       |
+| `Object.seal(obj)`    | Prevents adding/deleting props               |
+| `hasOwnProperty(key)` | Checks if object has the key                 |

@@ -1,0 +1,15 @@
+ What is prototype in JS ?
+ -------------------------
+ In JavaScript, every object has an internal property called [[Prototype]] (also accessible via .prototype or __proto__) which points to another object. 
+ This object acts as a blueprint or fallback for properties and methods.
+
+✅ It's the foundation of inheritance in JavaScript.
+
+🔸 Why does prototype exist?
+----------------------------
+JavaScript uses prototype-based inheritance instead of class-based inheritance (like Java or C++).
+
+When you try to access a property or method:
+1. JS first checks the object itself.
+2. If not found, it walks up the prototype chain to find it.
+

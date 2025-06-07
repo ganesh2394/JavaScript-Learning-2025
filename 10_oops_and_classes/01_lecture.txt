@@ -1,0 +1,71 @@
+==== JavaScript & OOPs =====
+
+Does JavaScript have classes ?
+------------------------------
+Yes, JavaScript does have classes, introduced in ES6 (ECMAScript 2015).
+
+But here’s the key thing:
+JavaScript classes are syntactic sugar over its existing prototype-based inheritance.
+
+🔷 What is a Class in JavaScript?
+----------------------------------
+A class in JavaScript is a template for creating objects (like in Java, C++, etc.).
+Before ES6, we used constructor functions and prototypes to simulate classes. Now, with ES6, 
+the class keyword makes it cleaner and more familiar to developers coming from OOP languages.
+
+🔸 Key Components
+------------------
+| Keyword       | Purpose                                        |
+| ------------- | ---------------------------------------------- |
+| `constructor` | Special method for initializing new objects    |
+| `this`        | Refers to the current instance                 |
+| Methods       | Defined inside the class, shared via prototype |
+| `new`         | Creates a new instance of the class            |
+
+
+🔸 Summary: Are JS Classes Real OOP Classes?
+--------------------------------------------
+✅ Yes: You can create classes, inheritance, encapsulation, polymorphism.
+⚠️ But under the hood, JavaScript still uses prototypes, not true class-based OOP like Java/C++.
+
+4 Pillars of OOPs :-
+--------------------
+1. Abstraction 
+2. Encapsulation 
+3. Inheritance 
+4. Polymorphism 
+
+🔷 What is an Object Literal?
+-----------------------------
+In JavaScript, an object literal is a way to create objects using curly braces {} and define key-value pairs.
+
+Example :-
+
+const person = {
+  name: "Ganesh",
+  age: 25,
+  isStudent: true
+};
+
+🔷 What is a Constructor Function?
+----------------------------------
+
+A constructor function is a special function used to create and initialize objects in JavaScript.
+It acts as a blueprint for creating multiple similar objects.
+
+✅ A constructor function is always called using the new keyword.
+
+Basic Syntax
+------------
+
+function User(name, age){
+     this.name = name;
+     this.age = age;
+}
+
+✅ Usage:
+const p1 = new User("Harry", 25);
+const p2 = new User("James", 22);
+
+console.log(p1.name); // Harry
+console.log(p2.age);  // 22
